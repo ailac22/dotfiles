@@ -1,10 +1,8 @@
-# Dotfiles de ailac22
+# ailac22's dotfiles
 
+## Spotifyd
 
-## Spotify
-
-para configurar spotify: 
-https://spotifyd.github.io/spotifyd/config/File.html
+[configure spotifyd](https://spotifyd.github.io/spotifyd/config/File.html)
 
 ## Sway config resources
 
