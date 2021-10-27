@@ -16,9 +16,11 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Browser
-set $browser brave
+set $browser qutebrowser
 #IDE
 set $IDE lvim
+#File manager
+set $FILE_MANAGER ranger
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -96,7 +98,7 @@ output * bg /home/ailac22/wallpapers/79K5ZT.jpg fill
 
     # shortcuts rápidos programas custom
     #"python /run/media/ailac22/Proyectos/ranger_git/ranger/ranger.py"
-    bindsym $mod+Shift+c exec $term -e python /run/media/ailac22/Proyectos/ranger_git/ranger/ranger.py
+    bindsym $mod+Shift+c exec $term -e $FILE_MANAGER
     bindsym $mod+Shift+x exec $term 
     bindsym $mod+Shift+z exec $browser
     bindsym $mod+Shift+v exec $term -e $IDE
@@ -249,10 +251,10 @@ bar {
     swaybar_command waybar
 }
 
-client.focused	#4c7899 #285577	#ffffff	#2e9ef4	#8c8c8c
+client.focused	#4c7899 #285577	#ffffff	#2e9ef4	#d1d1d1
 
 gaps inner 10 
-#default_border pixel 3 
+default_border pixel 6 
 
 #https://unix.stackexchange.com/questions/571234/how-to-set-layout-of-a-multiple-sway-i3-containers-on-startup
 
@@ -266,25 +268,32 @@ exec swaymsg "workspace 1; exec $browser;"
 exec swaymsg "workspace 2; exec $term -e lvim;"
 # 3 - Terminal/file manager
 
-exec swaymsg "workspace 3; exec $term -e ranger;"
-exec swaymsg "workspace 3; exec $term;"
+exec swaymsg "workspace 3; exec $term -e tmux;"
 exec swaymsg "layout tabbed;"
+exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
 #exec sleep 3s
 # 4 - Apuntes / preview
 
 # 5 - Buku / pass manager
-exec swaymsg "workspace 5; exec $term -e buku;"
+#exec swaymsg "workspace 5; exec $term -e buku;"
 # pass manager
 
 # 6 - Twitch/YT
 # 7 - Free
 
 # 8 - Discord
-exec swaymsg "workspace 8; exec discord;"
+# NO FUNCIONA
+#exec swaymsg "workspace 8; exec discord;"
+#exec sleep 10s
 # 9 - Clocks/Pomodoro/btop 
-exec swaymsg "workspace 9; exec gnome-clocks"
-exec swaymsg "layout tabbed;"
+exec swaymsg "workspace 8; exec gnome-clocks"
+#exec swaymsg "layout tabbed;"
 exec swaymsg "workspace 9; exec $term -e bpytop;"
 # 10 spotify-tui
 exec swaymsg "workspace 10; exec $term -e spt;"
 #fullscreen enable
+
+# Volume buttons
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
