@@ -10,7 +10,7 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = true
+lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -64,6 +64,8 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.nvimtree.setup.view.width = 60;
 lvim.builtin.nvimtree.setup.view.auto_resize = true;
+lvim.builtin.nvimtree.open_on_tab = true;
+lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -122,6 +124,41 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   }
 -- }
 
+local function set_harpoon_keymaps()
+  lvim.keys.normal_mode["<C-Space>"] = "<cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>"
+  lvim.keys.normal_mode["tu"] = "<cmd>lua require('harpoon.term').gotoTerminal(1)<CR>"
+  lvim.keys.normal_mode["te"] = "<cmd>lua require('harpoon.term').gotoTerminal(2)<CR>"
+  lvim.keys.normal_mode["cu"] = "<cmd>lua require('harpoon.term').sendCommand(1, 1)<CR>"
+  lvim.keys.normal_mode["ce"] = "<cmd>lua require('harpoon.term').sendCommand(1, 2)<CR>"
+  lvim.keys.normal_mode["<C-n>"] = "<CMD>lua require('harpoon.ui').nav_file(8)<CR>"
+  lvim.keys.normal_mode["<leader>v"] = "<CMD>lua require('harpoon.ui').nav_prev()<CR>"
+  lvim.keys.normal_mode["<leader>n"] = "<CMD>lua require('harpoon.ui').nav_next()<CR>"
+  lvim.builtin.which_key.mappings["a"] = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add Mark" }
+  lvim.builtin.which_key.mappings["<leader>"] = {
+    "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>",
+    "Harpoon",
+  }
+
+  local whk_status, whk = pcall(require, "which-key")
+  if not whk_status then
+    return
+  end
+  whk.register {
+    ["<leader>1"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "goto1" },
+    ["<leader>2"] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "goto2" },
+    ["<leader>3"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
+    ["<leader>4"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
+    ["<leader>5"] = { "<CMD>lua require('harpoon.ui').nav_file(5)<CR>", "goto5" },
+    ["<leader>6"] = { "<CMD>lua require('harpoon.ui').nav_file(6)<CR>","goto6" },
+    ["<leader>7"] = { "<CMD>lua require('harpoon.ui').nav_file(7)<CR>","goto7" },
+    ["<leader>8"] = { "<CMD>lua require('harpoon.ui').nav_file(8)<CR>","goto8" },
+    ["<leader>9"] = { "<CMD>lua require('harpoon.ui').nav_file(9)<CR>","goto9" }
+  }
+end
+
+set_harpoon_keymaps()
+
+
 -- Additional Plugins
 lvim.plugins = {
     {"folke/tokyonight.nvim"},
@@ -130,11 +167,26 @@ lvim.plugins = {
       cmd = "TroubleToggle",
     },
 
-    {"ggandor/lightspeed.nvim"},
-  {"kevinhwang91/rnvimr"},
-  
-}
+  {"ggandor/lightspeed.nvim"},
+  -- {"kevinhwang91/rnvimr"},
+  {"mattn/emmet-vim"},
+  {"blackCauldron7/surround.nvim",
+   config = function()
+     require"surround".setup {
+   mappings_style = "sandwich",
+   quotes = {"'", '"'},
+   brackets = {"(", '{', '['},
+   pairs = {
+     nestable = {{"(", ")"}, {"[", "]"}, {"{", "}"}},
+     linear = {{"'", "'"}, {"`", "`"}, {'"', '"'}}
+   },
+   prefix = "8"
+   }
+   end},
+  {"ThePrimeagen/harpoon"}
 
+  -- {"andymass/vim-matchup"}  
+}
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
