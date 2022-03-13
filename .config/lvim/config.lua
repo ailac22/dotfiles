@@ -13,6 +13,11 @@ lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "onedarker"
 
+-- HOW TO DEBUG
+
+-- print(vim.inspect(lvim.builtin.harpoon))
+
+
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -20,7 +25,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
  lvim.keys.normal_mode["<C-P>"] =":BufferPin<cr>"
  lvim.keys.normal_mode["<C-B>"] =":BufferCloseAllButPinned<cr>"
-
 -- unmap a default keymapping
 -- lvim.keys.normal_mode["<C-Up>"] = ""
 -- edit a default keymapping
@@ -65,9 +69,12 @@ lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.nvimtree.setup.view.width = 60;
 lvim.builtin.nvimtree.setup.view.auto_resize = true;
 lvim.builtin.nvimtree.open_on_tab = true;
-lvim.builtin.harpoon = { active = true } -- use the harpoon plugin
+lvim.builtin.harpoon = { active = true, width = 200 }; -- use the harpoon plugin
 
+-- lvim.inspector(lvim.builtin.harpoon)
+-- lvim.builtin.harpoon.width
 -- if you don't want all the parsers change this to a table of the ones you want
+
 lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
@@ -117,7 +124,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 --     exe = "black",
 --   }
 -- }
--- set an additional linter
+-- -- set an additional linter
 -- lvim.lang.python.linters = {
 --   {
 --     exe = "flake8",
@@ -167,6 +174,8 @@ lvim.plugins = {
       cmd = "TroubleToggle",
     },
 
+  {"tomlion/vim-solidity"},
+  -- {"tzachar/cmp-tabnine"},
   {"ggandor/lightspeed.nvim"},
   -- {"kevinhwang91/rnvimr"},
   {"mattn/emmet-vim"},
