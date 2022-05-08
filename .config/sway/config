@@ -20,8 +20,10 @@ set $browser qutebrowser
 #IDE
 set $IDE lvim
 #File manager
-set $FILE_MANAGER ranger
+set $FILE_MANAGER lf
 
+#Resource Monitor
+set $RESOURCE_MONITOR btop
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -102,8 +104,9 @@ output * bg /home/ailac22/wallpapers/79K5ZT.jpg fill
     bindsym $mod+Shift+x exec $term 
     bindsym $mod+Shift+z exec $browser
     bindsym $mod+Shift+v exec $term -e $IDE
-
-    #código para la tecla < → less
+    bindsym $mod+o exec wlogout
+    bindsym $mod+p exec grim -g "$(slurp)" screenshot.png
+   #código para la tecla < → less
 for_window [app_id="floating"] floating enable#
 # Moving around:
 #
@@ -247,15 +250,19 @@ input type:keyboard {
 
 bar {
 
+#    mode invisible
     position bottom
     swaybar_command waybar
 }
 
 client.focused	#4c7899 #285577	#ffffff	#2e9ef4	#d1d1d1
 
-gaps inner 10 
-default_border pixel 6 
-
+#gaps inner 10 
+default_border pixel 2 
+smart_borders on
+#smart_gaps on
+#titlebar_border_thickness 2 
+#titlebar_padding 1 1 
 #https://unix.stackexchange.com/questions/571234/how-to-set-layout-of-a-multiple-sway-i3-containers-on-startup
 
 for_window [app_id="floating"] floating enable
@@ -268,7 +275,7 @@ exec swaymsg "workspace 1; exec $browser;"
 exec swaymsg "workspace 2; exec $term -e lvim;"
 # 3 - Terminal/file manager
 
-exec swaymsg "workspace 3; exec $term -e tmux;"
+exec swaymsg "workspace 3; exec $term"
 exec swaymsg "layout tabbed;"
 exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
 #exec sleep 3s
@@ -285,10 +292,10 @@ exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
 # NO FUNCIONA
 #exec swaymsg "workspace 8; exec discord;"
 #exec sleep 10s
-# 9 - Clocks/Pomodoro/btop 
-exec swaymsg "workspace 8; exec gnome-clocks"
+
+exec swaymsg "workspace 8; exec $term;"
 #exec swaymsg "layout tabbed;"
-exec swaymsg "workspace 9; exec $term -e bpytop;"
+exec swaymsg "workspace 9; exec $term -e $RESOURCE_MONITOR;"
 # 10 spotify-tui
 exec swaymsg "workspace 10; exec $term -e spt;"
 #fullscreen enable

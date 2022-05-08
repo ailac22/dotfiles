@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -10,11 +17,9 @@ export ZSH="/home/ailac22/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="sorin"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
+# Set list of themes to pick from when loading at random # Setting this variable when ZSH_THEME=random will cause zsh to load # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -73,28 +78,60 @@ ZSH_THEME="sorin"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git copydir archlinux systemd vscode tmux docker spring npm ufw extract zsh-z zsh-completions)
+plugins=(git copypath archlinux systemd vscode docker spring npm ufw extract zsh-z zsh-completions)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+export TERM=alacritty
 export EDITOR=lvim
 export VISUAL=lvim
+export PAGER=bat
+export OPENER=xdg-open
 export PATH=$PATH:/home/ailac22/.local/bin/
-alias tm=tmux
-alias ra=ranger
 export PATH=$PATH:$HOME/.local/bin
-alias cpd=copydir
+alias cpth=copypath
 alias scs='systemctl suspend'
-alias lv=lvim
+alias sdn='shutdown now'
 alias lg=lazygit
+alias ldo=lazydocker
 alias b=buku
-
+alias c='bc -l'
+export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 alias pvpnc='protonvpn-cli c -f'
 alias pvpnd='protonvpn-cli d'
+
+alias pomo='qutebrowser --target window pomofocus.io'
+# Stopwatch function
+function t(){
+   termdown $1 -v en -b -t "Finished" -W 
+}
+
+function t25(){
+  t 25m
+}
+
+function t5(){
+  t 5m
+}
+
+function t10(){
+  t 10m
+}
+
+# Crypto utils
+# curl rate.sx/:help para mas cosas
+
+function ra20(){
+  curl 'rate.sx/?n=20'
+}
+
+function ra(){
+  curl rate.sx/$1
+}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -121,3 +158,7 @@ alias pvpnd='protonvpn-cli d'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source /home/ailac22/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
