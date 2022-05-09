@@ -83,7 +83,6 @@ plugins=(git copypath archlinux systemd vscode docker spring npm ufw extract zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 export TERM=alacritty
 export EDITOR=lvim
 export VISUAL=lvim

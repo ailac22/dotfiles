@@ -18,6 +18,7 @@ lvim.leader = "space"
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
+-- hola
 -- PIN SHORTCUTS
 -- lvim.keys.normal_mode["<C-P>"] =":BufferPin<cr>"
 -- lvim.keys.normal_mode["<C-B>"] =":BufferCloseAllButPinned<cr>"
