@@ -95,6 +95,7 @@ alias scs='systemctl suspend'
 alias sdn='shutdown now'
 alias lg=lazygit
 alias ldo=lazydocker
+alias isxwayland=xlsclients
 alias b=buku
 alias c='bc -l'
 export DISABLE_AUTO_TITLE='true'

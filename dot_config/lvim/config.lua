@@ -14,8 +14,7 @@ lvim.format_on_save = true
 lvim.colorscheme = "onedarker"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space"
--- add your own keymapping
+lvim.leader = "space" -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- hola
@@ -184,7 +183,6 @@ end
 
 set_harpoon_keymaps()
 
-
 -- Additional Plugins
 lvim.plugins = {
     {"folke/tokyonight.nvim"},
@@ -194,8 +192,17 @@ lvim.plugins = {
     },
     {"ggandor/lightspeed.nvim"},
     {"mattn/emmet-vim"},
-    {"ThePrimeagen/harpoon"}
+    {"ThePrimeagen/harpoon"},
+    {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      ft = "markdown",
+      config = function()
+        vim.g.mkdp_auto_start = 1
+      end,
+    }
 }
+
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
