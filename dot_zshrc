@@ -43,7 +43,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -105,6 +105,10 @@ alias pvpnc='protonvpn-cli c -f'
 alias pvpnd='protonvpn-cli d'
 
 alias pomo='qutebrowser --target window pomofocus.io'
+
+# TODO: En endeavourOS a lo mejor esto ya no es necesario?
+unset LSCOLORS
+
 # Stopwatch function
 function t(){
    termdown $1 -v en -b -t "Finished" -W 
