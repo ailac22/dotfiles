@@ -1,46 +1,48 @@
+* {
+  font-family: Cozette;
+  color: #e5e9f0;
+}
+
 window {
-margin: 0px;
-border: 2px solid #7da6ff;
-background-color: #1a1b26;
-border-radius: 5px;
-}
-
-#input {
-margin: 5px;
-border: none;
-color: #f8f8f2;
-background-color: #1a1b26;
-}
-
-#inner-box {
-margin: 5px;
-border: none;
-background-color: #1a1b26;
-border-radius: 5px;
+  background-color: #2e3440;
+  border: 2px solid #88c0d0;
+  border-radius: 10px;
 }
 
 #outer-box {
-margin: 5px;
-border: none;
-background-color: #24283b;
+  margin-bottom: 12px;
 }
 
-#scroll {
-margin: 0px;
-border: none;
+#input {
+  border: none;
+  background-color: #2e3440;
+  margin: 7px;
+  box-shadow: none; /* Remove blue "border" */
+}
+
+#inner-box {
+  background-color: #2e3440;
+  margin: 7px;
+  margin-top: 0;
+}
+
+#entry {
+  padding-left: 5px;
+  border: none;
+  margin-left: -5px;
+  margin-right: -5px;
+  outline: none;
+}
+
+#entry:selected {
+  background-color: #44475a;
 }
 
 #text {
-margin: 5px;
-border: none;
-color: #f8f8f2;
-} 
-
-#entry:selected {
-background-color: #373d57;
+  margin: 2px;
 }
 
-#entry:selected #text {
-  color: white;
-  background: #373d57;
+/* Hide backspace icon */
+.right {
+  color: transparent;
 }

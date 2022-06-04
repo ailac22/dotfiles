@@ -304,3 +304,10 @@ exec swaymsg "workspace 10; exec $term -e spt;"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+
+# NORD 
+# font Cozette 9
+gaps inner 20
+gaps outer -8
+# default_border none
