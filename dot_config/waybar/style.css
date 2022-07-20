@@ -12,7 +12,7 @@ window#waybar {
 
 window#waybar:first-child > box {
     margin-top: 11px;
-    padding: 4px 2px 2px 2px;
+    /* padding: 4px 2px 2px 2px; */
     border-radius: 10px 10px 0px 0px;
     background-color: #2e3440;
     border: 2px solid lightgrey;

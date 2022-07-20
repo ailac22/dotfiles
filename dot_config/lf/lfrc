@@ -119,6 +119,8 @@ set nopreview
 set ratios 1
 set info size:time
 set hidden
+set findlen 0 # ranger-like search with f
+set number
 ## Yank path/name
 cmd yank-dirname $dirname -- "$f" | head -c-1 | wl-copy
 cmd yank-path $printf '%s' "$fx" | wl-copy 
@@ -143,3 +145,4 @@ cmd yank-basename-without-extension ${{
       if [ -n "$fs" ]; then cat; else tr -d '\n'; fi |
       wl-copy
 }}
+

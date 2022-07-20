@@ -23,7 +23,7 @@ set $IDE lvim
 set $FILE_MANAGER lf
 
 #Resource Monitor
-set $RESOURCE_MONITOR btop
+set $RESOURCE_MONITOR btm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -267,7 +267,7 @@ smart_borders on
 
 for_window [app_id="floating"] floating enable
 
-exec spotifyd
+exec spotifyd -b pulseaudio
 
 # 1 - Browser
 exec swaymsg "workspace 1; exec $browser;"

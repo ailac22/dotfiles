@@ -103,7 +103,7 @@ export DISABLE_AUTO_TITLE='true'
 
 alias pvpnc='protonvpn-cli c -f'
 alias pvpnd='protonvpn-cli d'
-
+alias twi='taskwarrior-tui'
 alias pomo='qutebrowser --target window pomofocus.io'
 
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?

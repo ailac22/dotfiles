@@ -174,10 +174,10 @@ local function set_harpoon_keymaps()
     ["<leader>3"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
     ["<leader>4"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
     ["<leader>5"] = { "<CMD>lua require('harpoon.ui').nav_file(5)<CR>", "goto5" },
-    ["<leader>6"] = { "<CMD>lua require('harpoon.ui').nav_file(6)<CR>","goto6" },
-    ["<leader>7"] = { "<CMD>lua require('harpoon.ui').nav_file(7)<CR>","goto7" },
-    ["<leader>8"] = { "<CMD>lua require('harpoon.ui').nav_file(8)<CR>","goto8" },
-    ["<leader>9"] = { "<CMD>lua require('harpoon.ui').nav_file(9)<CR>","goto9" }
+    ["<leader>6"] = { "<CMD>lua require('harpoon.ui').nav_file(6)<CR>", "goto6" },
+    ["<leader>7"] = { "<CMD>lua require('harpoon.ui').nav_file(7)<CR>", "goto7" },
+    ["<leader>8"] = { "<CMD>lua require('harpoon.ui').nav_file(8)<CR>", "goto8" },
+    ["<leader>9"] = { "<CMD>lua require('harpoon.ui').nav_file(9)<CR>", "goto9" }
   }
 end
 
@@ -185,22 +185,29 @@ set_harpoon_keymaps()
 
 -- Additional Plugins
 lvim.plugins = {
-    {"folke/tokyonight.nvim"},
-    {
-      "folke/trouble.nvim",
-      cmd = "TroubleToggle",
-    },
-    {"ggandor/lightspeed.nvim"},
-    {"mattn/emmet-vim"},
-    {"ThePrimeagen/harpoon"},
-    {
-      "iamcco/markdown-preview.nvim",
-      run = "cd app && npm install",
-      ft = "markdown",
-      config = function()
-        vim.g.mkdp_auto_start = 1
-      end,
-    }
+  { "folke/tokyonight.nvim" },
+  {
+    "folke/trouble.nvim",
+    cmd = "TroubleToggle",
+  },
+  { "ggandor/lightspeed.nvim" },
+  { "mattn/emmet-vim" },
+  { "ThePrimeagen/harpoon" },
+  { "godlygeek/tabular" },
+  { "preservim/vim-markdown" },
+  { "lervag/vimtex" },
+  { "habamax/vim-asciidoctor" },
+  { "vim-pandoc/vim-pandoc" },
+  { "ellisonleao/glow.nvim" },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    config = function()
+      vim.g.mkdp_auto_start = 1
+    end,
+  }
 }
 
 
@@ -208,4 +215,3 @@ lvim.plugins = {
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
-
