@@ -8,13 +8,8 @@ an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 
--- general
-lvim.log.level = "warn"
-lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
-
--- keymappings [view all the defaults by pressing <leader>Lk]
-lvim.leader = "space" -- add your own keymapping
+-- general lvim.log.level = "warn" lvim.format_on_save = true
+lvim.colorscheme = "onedarker" -- keymappings [view all the defaults by pressing <leader>Lk] lvim.leader = "space" -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- hola
@@ -66,7 +61,7 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.width = 60;
 -- lvim.builtin.nvimtree.setup.view.auto_resize = true;
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+-- lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -191,15 +186,23 @@ lvim.plugins = {
     cmd = "TroubleToggle",
   },
   { "ggandor/lightspeed.nvim" },
-  { "mattn/emmet-vim" },
+  { "mattn/emmet-vim" }, -- shorcut: ctrl+y
   { "ThePrimeagen/harpoon" },
+  -- needed by vim markdown??
   { "godlygeek/tabular" },
   { "preservim/vim-markdown" },
   { "lervag/vimtex" },
   { "habamax/vim-asciidoctor" },
   { "vim-pandoc/vim-pandoc" },
+  -- de momento no funciona
   { "ellisonleao/glow.nvim" },
-
+  -- de momento no funciona
+  {
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker")
+    end,
+  },
   {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
@@ -207,9 +210,47 @@ lvim.plugins = {
     config = function()
       vim.g.mkdp_auto_start = 1
     end,
+  },
+  { "nvim-lua/plenary.nvim" },
+  {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("rest-nvim").setup({
+        -- Open request results in a horizontal split
+        result_split_horizontal = false,
+        -- Keep the http file buffer above|left when split horizontal|vertical
+        result_split_in_place = false,
+        -- Skip SSL verification, useful for unknown certificates
+        skip_ssl_verification = false,
+        -- Highlight request on run
+        highlight = {
+          enabled = true,
+          timeout = 150,
+        },
+        result = {
+          -- toggle showing URL, HTTP info, headers at top the of result window
+          show_url = true,
+          show_http_info = true,
+          show_headers = true,
+          -- executables or functions for formatting response body [optional]
+          -- set them to nil if you want to disable them
+          formatters = {
+            json = "jq",
+            html = function(body)
+              return vim.fn.system({ "tidy", "-i", "-q", "-" }, body)
+            end
+          },
+        },
+        -- Jump to request line on run
+        jump_to_request = false,
+        env_file = '.env',
+        custom_dynamic_variables = {},
+        yank_dry_run = true,
+      })
+    end
   }
 }
-
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {

@@ -20,7 +20,7 @@ set $browser qutebrowser
 #IDE
 set $IDE lvim
 #File manager
-set $FILE_MANAGER lf
+set $FILE_MANAGER ranger
 
 #Resource Monitor
 set $RESOURCE_MONITOR btm
@@ -249,7 +249,6 @@ input type:keyboard {
 }
 
 bar {
-
 #    mode invisible
     position bottom
     swaybar_command waybar

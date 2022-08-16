@@ -1,10 +1,5 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
+# Initialization code that may require console input (password prompts, [y/n] confirmations, etc.) must go above this block; everything else may go below. if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -12,9 +7,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/ailac22/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
+# Set name of the theme to load --- if set to "random", it will load a random theme each time oh-my-zsh is loaded, in which case, to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -78,9 +71,14 @@ DISABLE_LS_COLORS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git copypath archlinux systemd vscode docker spring npm ufw extract zsh-z zsh-completions)
+plugins=(git copypath archlinux systemd vscode docker spring npm ufw 
+  extract zsh-z zsh-completions zsh-aliases-exa golang ripgrep rsync minikube)
 
 source $ZSH/oh-my-zsh.sh
+
+# KeepassXC 
+RUTA_KEEPASS=/run/media/ailac22/Dades/llaves.kdbx
+alias kpx='keepassxc-cli open ${RUTA_KEEPASS}'
 
 # User configuration
 export TERM=alacritty
@@ -89,7 +87,7 @@ export VISUAL=lvim
 export PAGER=bat
 export OPENER=xdg-open
 export PATH=$PATH:/home/ailac22/.local/bin/
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/bin:/home/ailac22/go/bin
 alias cpth=copypath
 alias scs='systemctl suspend'
 alias sdn='shutdown now'
@@ -98,6 +96,23 @@ alias ldo=lazydocker
 alias isxwayland=xlsclients
 alias b=buku
 alias c='bc -l'
+alias r=ranger
+alias lv='lvim'
+alias tm='tmux'
+alias pt='pomotui'
+alias cat=bat
+## exa
+alias li='exa --icons -a --group-directories-first'
+
+# Ranger stuff
+# if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
+# Chezmoi alias
+alias chez=chezmoi
+alias cheza='chezmoi add'
+alias cheze='chezmoi edit'
+alias chezs='chezmoi status'
+
 export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -129,11 +144,11 @@ function t10(){
 # Crypto utils
 # curl rate.sx/:help para mas cosas
 
-function ra20(){
+function cr20(){
   curl 'rate.sx/?n=20'
 }
 
-function ra(){
+function cr(){
   curl rate.sx/$1
 }
 
@@ -166,3 +181,5 @@ function ra(){
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source /home/ailac22/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source /home/ailac22/.config/broot/launcher/bash/br
