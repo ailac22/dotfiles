@@ -73,6 +73,7 @@ DISABLE_LS_COLORS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git copypath archlinux systemd vscode docker spring npm ufw 
   extract zsh-z zsh-completions zsh-aliases-exa golang ripgrep rsync minikube)
+  
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,8 +96,8 @@ alias lg=lazygit
 alias ldo=lazydocker
 alias isxwayland=xlsclients
 alias b=buku
-alias c='bc -l'
-alias r=ranger
+# alias c='bc -l'
+alias ra=ranger
 alias lv='lvim'
 alias tm='tmux'
 alias pt='pomotui'
@@ -112,6 +113,7 @@ alias chez=chezmoi
 alias cheza='chezmoi add'
 alias cheze='chezmoi edit'
 alias chezs='chezmoi status'
+alias chezapp='chezmoi apply'
 
 export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -120,6 +122,7 @@ alias pvpnc='protonvpn-cli c -f'
 alias pvpnd='protonvpn-cli d'
 alias twi='taskwarrior-tui'
 alias pomo='qutebrowser --target window pomofocus.io'
+alias zj='zellij'
 
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?
 unset LSCOLORS

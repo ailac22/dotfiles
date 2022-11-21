@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Browser
-set $browser qutebrowser
+set $browser brave
 #IDE
 set $IDE lvim
 #File manager
@@ -35,7 +35,7 @@ set $menu wofi --show=drun --lines=4 --prompt="" --style="/home/ailac22/.config/
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/ailac22/wallpapers/79K5ZT.jpg fill
+output * bg /home/ailac22/wallpapers/wall.jpg fill
 
 #output * bg #5a6581 solid_color
 #
@@ -240,10 +240,11 @@ bindsym $mod+r mode "resize"
 
 include /etc/sway/config.d/*
 
-set $mod Mod4 # Super key
+#set $mod Mod4 # Super key
 input type:keyboard {
     xkb_layout es
-    xkb_options caps:super
+    # Make caps lock the super key
+    xkb_options caps:super 
     repeat_delay 250
     repeat_rate 100 
 }
@@ -263,7 +264,7 @@ smart_borders on
 #titlebar_border_thickness 2 
 #titlebar_padding 1 1 
 #https://unix.stackexchange.com/questions/571234/how-to-set-layout-of-a-multiple-sway-i3-containers-on-startup
-
+show_marks yes
 for_window [app_id="floating"] floating enable
 
 exec spotifyd -b pulseaudio
