@@ -118,8 +118,8 @@ alias chezapp='chezmoi apply'
 export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias evpn=expressvpn
 alias twi='taskwarrior-tui'
+alias pomo='qutebrowser --target window pomofocus.io'
 alias zj='zellij'
 
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?
@@ -179,8 +179,8 @@ function cr(){
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /home/ailac22/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-source /home/ailac22/.config/broot/launcher/bash/br
+# Instalado con yay, que lo pone en esta ruta
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
