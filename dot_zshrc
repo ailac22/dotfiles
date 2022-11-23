@@ -118,10 +118,8 @@ alias chezapp='chezmoi apply'
 export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias pvpnc='protonvpn-cli c -f'
-alias pvpnd='protonvpn-cli d'
+alias evpn=expressvpn
 alias twi='taskwarrior-tui'
-alias pomo='qutebrowser --target window pomofocus.io'
 alias zj='zellij'
 
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?
