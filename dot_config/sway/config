@@ -23,14 +23,14 @@ set $IDE lvim
 set $FILE_MANAGER ranger
 
 #Resource Monitor
-set $RESOURCE_MONITOR btm
+set $RESOURCE_MONITOR btop
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu wofi --show=drun --lines=4 --prompt="" --style="/home/ailac22/.config/wofi/style.css" --insensitive=true
+set $menu wofi --show=drun --lines=6 --prompt="" --insensitive=true --style="/home/ailac22/.config/wofi/style.css"
 
 ### Output configuration
 #
@@ -77,7 +77,8 @@ output * resolution 1920x1080 position 1920,0
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term --class=floating
+    bindsym $mod+Return exec $term 
+    # --class=floating
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -101,7 +102,7 @@ output * resolution 1920x1080 position 1920,0
     # shortcuts rápidos programas custom
     #"python /run/media/ailac22/Proyectos/ranger_git/ranger/ranger.py"
     bindsym $mod+Shift+c exec $term -e $FILE_MANAGER
-    bindsym $mod+Shift+x exec $term 
+    bindsym $mod+Shift+x exec $term
     bindsym $mod+Shift+z exec $browser
     bindsym $mod+Shift+v exec $term -e $IDE
     bindsym $mod+o exec wlogout
@@ -251,7 +252,7 @@ input type:keyboard {
 
 bar {
 #    mode invisible
-    position bottom
+    position top
     swaybar_command waybar
 }
 
@@ -267,7 +268,7 @@ smart_borders on
 show_marks yes
 for_window [app_id="floating"] floating enable
 
-exec spotifyd -b pulseaudio
+# exec spotifyd -b pulseaudio
 
 # 1 - Browser
 exec swaymsg "workspace 1; exec $browser;"
@@ -296,13 +297,11 @@ exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
 exec swaymsg "workspace 8; exec $term;"
 #exec swaymsg "layout tabbed;"
 exec swaymsg "workspace 9; exec $term -e $RESOURCE_MONITOR;"
-# 10 spotify-tui
-exec swaymsg "workspace 10; exec $term -e spt;"
 #fullscreen enable
 
 # Volume buttons
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 

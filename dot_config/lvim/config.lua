@@ -174,7 +174,7 @@ lvim.keys.normal_mode["<F3>"] = "<Plug>RestNvim"
 vim.keymap.set("n", "<F7>", ":BufferLineCyclePrev<cr>")
 vim.keymap.set("n", "<F8>", ":BufferLineCycleNext<cr>")
 
-
+lvim.keys.normal_mode["<F6>"] = "i```\n```<ESC><UP>"
 
 -- lvim.keys.normal_mode["<F4>"] = "<Esc><Cmd>ToggleTerm<CR>"
 vim.keymap.set("n", "<F10>", ":BufferLineTogglePin<cr>")

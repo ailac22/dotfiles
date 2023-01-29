@@ -1,54 +1,37 @@
 {
-    // Basic config
-    "layer": "bottom",
-    "position": "bottom",
-    "height": 10,
-    "margin-top": -10,
-    "margin-bottom": 0,
-    "margin-right": 12,
-    "margin-left": 12,
-
-    // Modules
-    "modules-left": ["clock"],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "custom/d", "mpd"],
-
-    // Modules configuration
-    "custom/d": {
-        "format": "|",
-        "tooltip": false
-    },
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-    },
-    "mpd": {
-        "format": "<span>{stateIcon} </span> ",
-        "format-disconnected": "<span color=\"#bf616a\"> </span> ",
-        "format-stopped": "<span color=\"#bf616a\"> </span> ",
-        "tooltip": false,
-        "interval": 1,
+	"layer": "top",
+	"modules-left": ["sway/workspaces", "mpd", "sway/mode"],
+	"modules-center": [],
+	"modules-right": ["network", "pulseaudio", "temperature", "cpu", "memory", "clock"],
+	"mpd": {
+		"tooltip": false,
+		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+		"format-disconnected": "ﳌ",
+		"format-stopped": "",
         "state-icons": {
-            "paused": "<span color=\"#d08770\"></span>",
-            "playing": "<span color=\"#a3be8c\"></span>",
+            "playing": "",
+            "paused": ""
         }
-    },
-    "clock": {
-        "interval": 1,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "<span color=\"#88c0d0\"></span> {:%Y-%m-%d, %H:%M:%S}",
-    },
-    "pulseaudio": {
-        "format": "{volume}% <span color=\"#88c0d0\">{icon} </span>{format_source}",
-        "format-muted": "<span color=\"#d08770\">婢 </span>{format_source}",
-        "format-source": "<span color=\"#88c0d0\"> </span>",
-        "format-source-muted": "<span color=\"#d08770\"> </span>",
-        "format-icons": {
-            "headset": "",
-            "default": ["", ""]
-        },
-        "on-click": "amixer set Master toggle && amixer set Capture toggle",
-        "on-click-right": "amixer set Capture toggle",
-        "on-click-middle": "alacritty --class floating -e pulsemixer",
-    }
+	},
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "{icon} {volume}%",
+		"format-icons": {
+			"default": ["奄", "奔", "墳"]
+		}
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": " {essid} {ipaddr}",
+		"format-ethernet": " {ipaddr}"
+	},
+	"cpu": {
+		"tooltip": false,
+		"format": " {}%"
+	},
+	"memory": {
+		"tooltip": false,
+		"format": " {}%"
+	}
 }

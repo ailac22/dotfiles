@@ -142,6 +142,12 @@ function t10(){
   t 10m
 }
 
+
+function attack(){
+  echo "tgt=$1" > .ataca_tanaka
+  exec zsh
+}
+
 # Crypto utils
 # curl rate.sx/:help para mas cosas
 
