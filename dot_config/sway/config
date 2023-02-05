@@ -271,14 +271,14 @@ for_window [app_id="floating"] floating enable
 # exec spotifyd -b pulseaudio
 
 # 1 - Browser
-exec swaymsg "workspace 1; exec $browser;"
+#exec swaymsg "workspace 1; exec $browser;"
 # 2 - IDE
-exec swaymsg "workspace 2; exec $term -e lvim;"
+#exec swaymsg "workspace 2; exec $term -e lvim;"
 # 3 - Terminal/file manager
 
-exec swaymsg "workspace 3; exec $term"
-exec swaymsg "layout tabbed;"
-exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
+# exec swaymsg "workspace 3; exec $term"
+# exec swaymsg "layout tabbed;"
+# exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
 #exec sleep 3s
 # 4 - Apuntes / preview
 
