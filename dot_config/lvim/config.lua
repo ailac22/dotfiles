@@ -62,6 +62,9 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
+
+vim.cmd(":set wrap")
+
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
@@ -165,7 +168,7 @@ lvim.builtin.treesitter.highlight.enable = true
 
 
 
-require('leap').set_default_keymaps()
+-- require('leap').set_default_keymaps()
 
 
 lvim.keys.normal_mode["<F2>"] = ":.w !bash<cr>"
@@ -221,8 +224,8 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
-   { "ggandor/leap.nvim" },
-  --- { "ggandor/lightspeed.nvim" },
+  -- { "ggandor/leap.nvim" },
+  { "ggandor/lightspeed.nvim" },
   { "mattn/emmet-vim" }, -- shorcut: ctrl+y
   -- { "ThePrimeagen/harpoon", require('leap').set_default_keymaps() },
   -- needed by vim markdown??
