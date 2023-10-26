@@ -1,17 +1,9 @@
 --[[
-lvim is the global options object
-
-Linters should be
-filled in as strings with either
+lvim is the global options object Linters should be filled in as strings with either
 a global executable or a path to
 an executable
 ]]
--- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
--- general
-lvim.log.level = "warn"
-lvim.format_on_save = false
-lvim.colorscheme = "tokyonight"
+-- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT general lvim.log.level = "warn" lvim.format_on_save = false lvim.colorscheme = "tokyonight"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
 
@@ -62,9 +54,6 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-
-vim.cmd(":set wrap")
-
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
@@ -168,7 +157,7 @@ lvim.builtin.treesitter.highlight.enable = true
 
 
 
--- require('leap').set_default_keymaps()
+require('leap').set_default_keymaps()
 
 
 lvim.keys.normal_mode["<F2>"] = ":.w !bash<cr>"
@@ -224,8 +213,8 @@ lvim.plugins = {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   },
-  -- { "ggandor/leap.nvim" },
-  { "ggandor/lightspeed.nvim" },
+  { "ggandor/leap.nvim" },
+  -- { "ggandor/lightspeed.nvim" },
   { "mattn/emmet-vim" }, -- shorcut: ctrl+y
   -- { "ThePrimeagen/harpoon", require('leap').set_default_keymaps() },
   -- needed by vim markdown??
@@ -248,7 +237,7 @@ lvim.plugins = {
   -- },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
+    build = "cd app && npm install",
     ft = "markdown",
     config = function()
       vim.g.mkdp_auto_start = 1
@@ -256,7 +245,7 @@ lvim.plugins = {
   },
   {
     "NTBBloodbath/rest.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("rest-nvim").setup({
         -- Open request results in a horizontal split
