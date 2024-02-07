@@ -101,6 +101,12 @@ alias cat=bat
 ## exa
 alias li='eza --icons -a --group-directories-first'
 
+# Proton vpn
+
+alias pvpnup='sudo wg-quick up proton-free'
+alias pvpndown='sudo wg-quick down proton-free'
+alias pvpncheck='sudo wg'
+
 # Ranger stuff
 # if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
