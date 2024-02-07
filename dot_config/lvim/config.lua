@@ -157,7 +157,6 @@ lvim.builtin.treesitter.highlight.enable = true
 
 
 
-require('leap').set_default_keymaps()
 
 
 lvim.keys.normal_mode["<F2>"] = ":.w !bash<cr>"
@@ -284,6 +283,7 @@ lvim.plugins = {
 }
 
 
+require('leap').set_default_keymaps()
 
 
 

@@ -71,7 +71,7 @@ DISABLE_LS_COLORS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git copypath archlinux systemd vscode docker spring npm ufw 
-  extract zsh-z zsh-completions zsh-aliases-exa golang ripgrep rsync minikube)
+  extract zsh-z zsh-completions zsh-aliases-eza golang ripgrep rsync minikube)
   
 
 source $ZSH/oh-my-zsh.sh
@@ -99,7 +99,7 @@ alias tm='tmux'
 alias pt='pomotui'
 alias cat=bat
 ## exa
-alias li='exa --icons -a --group-directories-first'
+alias li='eza --icons -a --group-directories-first'
 
 # Ranger stuff
 # if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
@@ -119,7 +119,7 @@ alias pomo='qutebrowser --target window pomofocus.io'
 alias zj='zellij'
 
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?
-unset LSCOLORS
+# unset LSCOLORS
 
 # Stopwatch function
 function t(){
