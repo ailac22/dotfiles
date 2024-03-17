@@ -82,7 +82,7 @@ export EDITOR=lvim
 export VISUAL=lvim
 export PAGER=bat
 export OPENER=xdg-open
-export BROWSER=brave
+export BROWSER=librewolf
 export PATH=$PATH:/home/ailac22/.local/bin/
 export PATH=$PATH:$HOME/.local/bin:/home/ailac22/go/bin
 alias cpth=copypath
@@ -193,3 +193,5 @@ source ~/.ataca_tanaka
 # Instalado con yay, que lo pone en esta ruta
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+
+source /home/ailac22/.config/broot/launcher/bash/br
