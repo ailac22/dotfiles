@@ -144,11 +144,14 @@ function t10(){
   t 10m
 }
 
-
 function attack(){
-  echo "tgt=$1" > .ataca_tanaka
+  echo "TGT=$1" > ~/.ataca_tanaka
   exec zsh
 }
+
+if [ -f ~/.ataca_tanaka ]; then 
+  source ~/.ataca_tanaka
+fi
 
 # Crypto utils
 # curl rate.sx/:help para mas cosas
@@ -185,9 +188,8 @@ function cr(){
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-source ~/.ataca_tanaka
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Instalado con yay, que lo pone en esta ruta

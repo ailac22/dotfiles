@@ -1,8 +1,5 @@
 # Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Copy this to ~/.config/sway/config and edit it to your liking. Read `man 5 sway` for a complete reference.
 
 ### Variables
 #
@@ -22,6 +19,12 @@ set $browser librewolf
 set $IDE lvim
 #File manager
 set $FILE_MANAGER ranger
+set $PASS_MANAGER keepassxc
+
+set $MAIL thunderbird
+set $MAIL2 proton-mail
+set $TWITCH streamlink-twitch-gui
+set $SPOTIFY spotify
 
 #Resource Monitor
 set $RESOURCE_MONITOR btop
@@ -106,6 +109,12 @@ output * resolution 1920x1080 position 1920,0
     bindsym $mod+Shift+x exec $term
     bindsym $mod+Shift+z exec $browser
     bindsym $mod+Shift+v exec $term -e $IDE
+    bindsym $mod+Shift+a exec $TWITCH
+    bindsym $mod+Shift+s exec $MAIL
+    bindsym $mod+Shift+d exec $MAIL2
+    bindsym $mod+Shift+f exec $PASS_MANAGER
+    bindsym $mod+Shift+r exec $SPOTIFY
+
     bindsym $mod+o exec wlogout
     bindsym $mod+p exec grim -g "$(slurp)" screenshot.png
    #código para la tecla < → less
@@ -276,7 +285,7 @@ for_window [app_id="floating"] floating enable
 # 2 - IDE
 #exec swaymsg "workspace 2; exec $term -e lvim;"
 # 3 - Terminal/file manager
-
+# exec swaymsg "workspace 3; exec spotify"
 # exec swaymsg "workspace 3; exec $term"
 # exec swaymsg "layout tabbed;"
 # exec swaymsg "workspace 3; exec $term -e $FILE_MANAGER;"
@@ -295,7 +304,7 @@ for_window [app_id="floating"] floating enable
 #exec swaymsg "workspace 8; exec discord;"
 #exec sleep 10s
 
-exec swaymsg "workspace 8; exec $term;"
+# exec swaymsg "workspace 8; exec $term;"
 #exec swaymsg "layout tabbed;"
 exec swaymsg "workspace 9; exec $term -e $RESOURCE_MONITOR;"
 #fullscreen enable
