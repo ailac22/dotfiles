@@ -71,15 +71,15 @@ DISABLE_LS_COLORS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git copypath archlinux systemd vscode docker spring npm ufw 
-  extract zsh-z zsh-completions zsh-aliases-eza golang ripgrep rsync minikube)
+  extract zsh-z zsh-completions zsh-aliases-eza golang ripgrep rsync minikube poetry)
   
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export TERM=alacritty
-export EDITOR=lvim
-export VISUAL=lvim
+export EDITOR=nvim
+export VISUAL=nvim
 export PAGER=bat
 export OPENER=xdg-open
 export BROWSER=firefox
@@ -93,8 +93,8 @@ alias ldo=lazydocker
 alias isxwayland=xlsclients
 alias b=buku
 # alias c='bc -l'
+alias nv=nvim
 alias ra=ranger
-alias lv='lvim'
 alias tm='tmux'
 alias pt='pomotui'
 alias cat=bat
@@ -120,7 +120,6 @@ alias chezapp='chezmoi apply'
 export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias twi='taskwarrior-tui'
 alias pomo='qutebrowser --target window pomofocus.io'
 alias zj='zellij'
 
@@ -197,3 +196,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 
 source /home/ailac22/.config/broot/launcher/bash/br
+
+# pnpm
+export PNPM_HOME="/home/ailac22/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
