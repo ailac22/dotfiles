@@ -122,6 +122,7 @@ export DISABLE_AUTO_TITLE='true'
 
 alias pomo='qutebrowser --target window pomofocus.io'
 alias zj='zellij'
+alias update='yaupg --noconfirm'
 
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?
 # unset LSCOLORS

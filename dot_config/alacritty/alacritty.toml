@@ -32,3 +32,6 @@ yellow = "0xd19a66"
 background = "0x12151d"
 bright_foreground = "0xe6efff"
 foreground = "0xabb2bf"
+
+[shell]
+program = "zellij"
