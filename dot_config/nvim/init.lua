@@ -15,9 +15,5 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
-vim.api.nvim_set_keymap('n', '<S-Tab>', ':bprev<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Tab>', ':bnext<CR>', { noremap = true })
-
 require "lazy_setup"
 require "polish"
-require('leap').create_default_mappings()
