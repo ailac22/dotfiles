@@ -1,0 +1,39 @@
+[[manager.prepend_keymap]]
+on   = ["g", "d"]
+run  = "cd /run/media/ailac22/dades"
+desc = "Go to dades"
+
+[[manager.prepend_keymap]]
+on   = ["g", "l"]
+run  = "plugin lazygit"
+desc = "run lazygit"
+
+[[manager.prepend_keymap]]
+on   = ["g", "m"]
+run  = "cd /run/media/ailac22/mates"
+desc = "Go to mates"
+
+[[manager.prepend_keymap]]
+on   = ["g", "p"]
+run  = "cd /run/media/ailac22/dades/proyectos"
+desc = "Go to proyectos"
+
+[[manager.prepend_keymap]]
+on   = ["g", "n"]
+run  = "cd /run/media/ailac22/dades/notas"
+desc = "Go to notas"
+
+[[manager.prepend_keymap]]
+on   = ["g", "s"]
+run  = "cd /run/media/ailac22/dades/setup_files/"
+desc = "Go to setup"
+
+[[manager.prepend_keymap]]
+on   = [ "c", "a" ]
+run  = "plugin compress"
+desc = "Compress files"
+
+[[manager.prepend_keymap]]
+on   = ["g", "t"]
+run  = "cd /run/media/ailac22/dades/T-L/"
+desc = "Go to setup"

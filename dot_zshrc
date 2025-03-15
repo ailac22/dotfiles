@@ -94,7 +94,6 @@ alias isxwayland=xlsclients
 alias b=buku
 # alias c='bc -l'
 alias nv=nvim
-alias ra=ranger
 alias tm='tmux'
 alias pt='pomotui'
 alias cat=bat
@@ -135,22 +134,15 @@ alias hacer_backup='/run/media/ailac22/dades/setup_files/install_and_backup/back
 # TODO: En endeavourOS a lo mejor esto ya no es necesario?
 # unset LSCOLORS
 
-# Stopwatch function
-function t(){
-   termdown $1 -v en -b -t "Finished" -W 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
-function t25(){
-  t 25m
-}
-
-function t5(){
-  t 5m
-}
-
-function t10(){
-  t 10m
-}
 
 function attack(){
   echo "TGT=$1" > ~/.ataca_tanaka
