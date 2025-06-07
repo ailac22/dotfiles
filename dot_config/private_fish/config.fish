@@ -10,7 +10,7 @@ set -U fish_greeting
 
 set -gx TERM alacritty
 set -gx EDITOR nvim
-set -gx VISUAL code
+set -gx VISUAL nvim
 set -gx PAGER bat
 set -gx OPENER xdg-open
 set -gx BROWSER firefox
