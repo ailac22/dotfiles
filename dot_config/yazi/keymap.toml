@@ -1,10 +1,15 @@
 [[manager.prepend_keymap]]
+on   = "!"
+run  = 'shell "$SHELL" --block zellij'
+desc = "Open shell here"
+
+[[manager.prepend_keymap]]
 on   = ["g", "d"]
 run  = "cd /run/media/ailac22/dades"
 desc = "Go to dades"
 
 [[manager.prepend_keymap]]
-on   = ["g", "l"]
+on   = ["i", "l"]
 run  = "plugin lazygit"
 desc = "run lazygit"
 
@@ -14,9 +19,19 @@ run  = "cd /run/media/ailac22/mates"
 desc = "Go to mates"
 
 [[manager.prepend_keymap]]
+on   = ["g", "o"]
+run  = "cd /run/media/ailac22/dades/notas/orden/"
+desc = "Go to orden"
+
+[[manager.prepend_keymap]]
 on   = ["g", "p"]
 run  = "cd /run/media/ailac22/dades/proyectos"
 desc = "Go to proyectos"
+
+[[manager.prepend_keymap]]
+on   = ["g", "r"]
+run  = "cd /run/media/ailac22/dades/practice"
+desc = "Go to practice"
 
 [[manager.prepend_keymap]]
 on   = ["g", "n"]
@@ -31,9 +46,30 @@ desc = "Go to setup"
 [[manager.prepend_keymap]]
 on   = [ "c", "a" ]
 run  = "plugin compress"
-desc = "Compress files"
+desc = "Archive selected files"
 
 [[manager.prepend_keymap]]
 on   = ["g", "t"]
 run  = "cd /run/media/ailac22/dades/T-L/"
 desc = "Go to setup"
+
+[[manager.prepend_keymap]]
+on   = ["g", "l"]
+run  = "cd /run/media/ailac22/playground/"
+desc = "Go to playground"
+
+[[manager.prepend_keymap]]
+on = ["i", "n"]
+run = "shell --bg 'nautilus .'"
+desc = "Open Nautilus here"
+
+[[manager.prepend_keymap]]
+on = ["i", "v"]
+run = 'shell --bg "alacritty -e $EDITOR $1 &" '
+desc = "Open file in nvim"
+
+[[manager.prepend_keymap]]
+on = ["i", "c"]
+run = 'shell --bg "$VISUAL $1 &"'
+desc = "Open file in Code"
+

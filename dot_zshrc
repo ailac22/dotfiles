@@ -8,8 +8,8 @@
 export ZSH="/home/ailac22/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will load a random theme each time oh-my-zsh is loaded, in which case, to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random # Setting this variable when ZSH_THEME=random will cause zsh to load # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
@@ -27,7 +27,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
-
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
 
@@ -71,15 +70,15 @@ DISABLE_LS_COLORS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git copypath archlinux systemd vscode docker spring npm ufw 
-  extract zsh-z zsh-completions zsh-aliases-eza golang rsync minikube poetry)
+  extract golang rsync minikube poetry)
   
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export TERM=alacritty
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=helix
+export VISUAL=code
 export PAGER=bat
 export OPENER=xdg-open
 export BROWSER=firefox
@@ -93,9 +92,6 @@ alias ldo=lazydocker
 alias isxwayland=xlsclients
 alias b=buku
 # alias c='bc -l'
-alias nv=nvim
-alias tm='tmux'
-alias pt='pomotui'
 alias cat=bat
 ## exa
 alias li='eza --icons -a --group-directories-first'
@@ -104,7 +100,7 @@ alias li='eza --icons -a --group-directories-first'
 alias pvpnup='sudo wg-quick up proton-free'
 alias pvpndown='sudo wg-quick down proton-free'
 alias pvpncheck='sudo wg'
-
+alias hx='helix'
 # Ranger stuff
 # if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 
@@ -118,9 +114,8 @@ alias chezapp='chezmoi apply'
 export DISABLE_AUTO_TITLE='true'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias pomo='qutebrowser --target window pomofocus.io'
 alias zj='zellij'
-alias update='yaupg --noconfirm'
+alias update='paru -Syu --noconfirm'
 
 # Mounts
 
@@ -138,7 +133,7 @@ function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
+		builtin z -- "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
@@ -155,14 +150,6 @@ fi
 
 # Crypto utils
 # curl rate.sx/:help para mas cosas
-
-function cr20(){
-  curl 'rate.sx/?n=20'
-}
-
-function cr(){
-  curl rate.sx/$1
-}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -193,13 +180,11 @@ function cr(){
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Instalado con yay, que lo pone en esta ruta
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 source /home/ailac22/.config/broot/launcher/bash/br
 
-# nvm
-source /usr/share/nvm/init-nvm.sh
+# nvm TODO: Revisar
+#source /usr/share/nvm/init-nvm.sh
 
 # pnpm
 export PNPM_HOME="/home/ailac22/.local/share/pnpm"
@@ -211,4 +196,4 @@ esac
 
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+eval "$(zoxide init zsh)"

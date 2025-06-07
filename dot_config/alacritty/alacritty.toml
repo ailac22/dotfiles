@@ -1,3 +1,9 @@
+[terminal.shell]
+program = "/usr/bin/fish" # En zellij hay otro
+args = ["-c", "zellij"]
+
+# I got this somewhere out of https://github.com/alacritty/alacritty-theme. It's a preset
+
 [colors.bright]
 black = "0x5c6370"
 blue = "0x61afef"
