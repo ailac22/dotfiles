@@ -11,8 +11,8 @@ return {
         "prettier", -- Formatter for JavaScript/TypeScript
         "eslint_d", -- Linter for JavaScript/TypeScript
         "codelldb", -- Debugger for Rust/C/C++
-        "jedi-language-server"
-        "rust-analyzer"
+        "jedi-language-server",
+        "rust-analyzer",
         -- Add other tools as needed
       },
       auto_update = true, -- Automatically update tools

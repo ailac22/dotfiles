@@ -1,6 +1,7 @@
-[terminal.shell]
-program = "/usr/bin/fish" # En zellij hay otro
-args = ["-c", "zellij"]
+# my-mod
+# [terminal.shell]
+# program = "/usr/bin/fish"
+# args = ["-l"]
 
 # I got this somewhere out of https://github.com/alacritty/alacritty-theme. It's a preset
 

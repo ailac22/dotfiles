@@ -1,5 +1,6 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    set -x ZELLIJ_AUTO_EXIT true
+    eval (zellij setup --generate-auto-start fish | string collect)
 end
 
 ## ailac22-mine
@@ -90,6 +91,7 @@ end
 #     source /usr/share/nvm/init-nvm.sh
 # end
 
+
 # ??
 # pnpm
 set -gx PNPM_HOME /home/ailac22/.local/share/pnpm
@@ -104,5 +106,9 @@ zoxide init fish | source
 # Starfish initialization
 # https://github.com/starship/starship?tab=readme-ov-file#-installation
 starship init fish | source
+
+# Fish plugins
+# https://github.com/PatrickF1/fzf.fish/wiki/Cookbook
+set fzf_directory_opts --bind "ctrl-y:execute($OPENER {} &> /dev/tty)" --bind "ctrl-u:execute($EDITOR {} &> /dev/tty)"
 
 ## end-mine
