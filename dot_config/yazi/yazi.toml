@@ -1,0 +1,6 @@
+[mgr]
+show_hidden = false
+sort_by = "alphabetical"
+sort_sensitive = false
+sort_dir_first = true
+
