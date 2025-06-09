@@ -1,9 +1,10 @@
+## my-mod
+
 if status is-interactive
     set -x ZELLIJ_AUTO_EXIT true
-    eval (zellij setup --generate-auto-start fish | string collect)
+    # eval (zellij setup --generate-auto-start fish | string collect)
 end
 
-## ailac22-mine
 
 #https://fishshell.com/docs/current/cmds/fish_greeting.html#example
 set -U fish_greeting
