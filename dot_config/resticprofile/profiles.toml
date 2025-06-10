@@ -1,0 +1,14 @@
+version = "1"
+
+[default]
+repository = "local:/run/media/ailac22/seg_dades/pruebas_resticprofile"
+password-command = "python get-restic-pass.py"
+#run-before = "python run-before.py"
+
+
+[default.backup]
+verbose = true
+source = ["/run/media/ailac22/dades"]
+dry-run = true
+exclude = ["node_modules", ".Trash-1000"]
+schedule = "3d"
