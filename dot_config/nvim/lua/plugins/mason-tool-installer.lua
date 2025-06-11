@@ -11,9 +11,10 @@ return {
         "prettier", -- Formatter for JavaScript/TypeScript
         "eslint_d", -- Linter for JavaScript/TypeScript
         "codelldb", -- Debugger for Rust/C/C++
-        "jedi-language-server",
+        -- "jedi-language-server",
+        "ty",
         "rust-analyzer",
-        -- Add other tools as needed
+        --"taplo",
       },
       auto_update = true, -- Automatically update tools
       run_on_start = true, -- Install tools on Neovim startup

@@ -1,14 +1,50 @@
 version = "1"
 
-[default]
-repository = "local:/run/media/ailac22/seg_dades/pruebas_resticprofile"
-password-command = "python get-restic-pass.py"
-#run-before = "python run-before.py"
+# Dir structure:
 
+# /backup
+#   /restic_backup
+#   /aegis_backup
+#   /llaves_backup
+
+[groups]
+full-backup = ["cloud", "internal"]
+
+{{ $sourceDir := "/run/media/ailac22/dades" }}
+{{ $destCloudDir := "pcloud:backup" }}
+{{ $destLocalDir := "/run/media/ailac22/seg_dades/backup" }}
+{{ $resticBackupFolder := "/restic_backup"}}
+
+[default]
+password-command = "python get-restic-pass.py"
+run-before = "python run-before.py {{ .Profile.Name }}"
 
 [default.backup]
 verbose = true
-source = ["/run/media/ailac22/dades"]
+source = "{{ $sourceDir }}"
 dry-run = true
 exclude = ["node_modules", ".Trash-1000"]
-schedule = "3d"
+default-group = "full-backup"
+schedule = "daily"
+tags = ["dades_pc_principal"]
+
+[schedule-longer]
+inherit = "default"
+schedule = "4d"
+
+[cloud]
+inherit = "default"
+lock = "/tmp/resticprofile-cloud.lock"
+schedule = "daily"
+after-backup = true
+repository = "rclone:{{ $destCloudDir }}{{ $resticBackupFolder }}"
+run-after = "python run-after.py {{ $sourceDir }} {{ $destCloudDir }} {{ $destCloudDir }}"
+
+
+[internal]
+inherit = "schedule-longer"
+lock = "/tmp/resticprofile-internal.lock"
+after-backup = true
+repository = "local:{{ $destLocalDir }}{{ $resticBackupFolder }}"
+run-after = "python run-after.py {{ $sourceDir }} {{ $destLocalDir }} {{ $destCloudDir }}"
+
