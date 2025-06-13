@@ -1,4 +1,4 @@
-from restic_common import send_notification, rclone_sync, get_password_with_retry
+from restic_common import send_notification, rclone_sync 
 import sys
 import os
 
@@ -14,13 +14,6 @@ llavesFolder = "/llaves"
 
 
 def main():
-    # Get rclone config password
-    password = get_password_with_retry("backup_type", "rclone")
-    if password is None:
-        send_notification("Failed to get rclone password, skipping sync")
-        return
-    
-    os.environ["RCLONE_CONFIG_PASS"] = password
 
     print("arg 1: ", sys.argv[1], "arg 2 ", sys.argv[2], "arg 3", sys.argv[3])
     rclone_sync(sys.argv[1] + llavesFolder, sys.argv[2] +

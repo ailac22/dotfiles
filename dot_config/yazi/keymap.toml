@@ -68,8 +68,4 @@ on = ["i", "v"]
 run = 'shell --bg "alacritty -e $EDITOR $1 &" '
 desc = "Open file in nvim"
 
-[[mgr.prepend_keymap]]
-on = ["i", "c"]
-run = 'shell --bg "$VISUAL $1 &"'
-desc = "Open file in Code"
 

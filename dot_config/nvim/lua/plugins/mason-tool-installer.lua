@@ -7,12 +7,12 @@ return {
       ensure_installed = {
         "lua-language-server", -- Lua LSP
         "stylua", -- Lua formatter
-        "python-lsp-server", -- Python LSP
-        "prettier", -- Formatter for JavaScript/TypeScript
+        -- "python-lsp-server", -- Python LSP
+        -- "prettier", -- Formatter for JavaScript/TypeScript
         "eslint_d", -- Linter for JavaScript/TypeScript
         "codelldb", -- Debugger for Rust/C/C++
-        -- "jedi-language-server",
-        "ty",
+        "jedi-language-server",
+        -- "ty",
         "rust-analyzer",
         --"taplo",
       },
