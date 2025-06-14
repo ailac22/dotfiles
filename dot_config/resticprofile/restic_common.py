@@ -14,6 +14,10 @@ def send_notification(message, urgency="critical"):
         check=True,
     )
 
+# TODO: Por ahora no funciona
+# def play_sound(parent_path:str):
+#     print(parent_path + "/alarm.ogg")
+#     subprocess.run(["pw-play", parent_path + "/alarm.ogg"])
 
 # def get_password(attribute, value):
 #     """Attempt to retrieve password from KeePassXC Secret Service."""
@@ -64,7 +68,7 @@ def rclone_sync(source: str, destination: str, include_filter: str = None, optio
         return
 
     # Build the command
-    cmd = ['rclone', 'sync', source, destination, "-v", "--dry-run"]
+    cmd = ['rclone', 'sync', source, destination, "-v"] # , "--dry-run"
 
     # Add include filter if specified
     if include_filter:

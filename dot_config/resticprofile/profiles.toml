@@ -19,6 +19,7 @@ schedule-after-network-online = true
 
 [groups]
 full-backup = ["cloud", "internal"]
+longer-backups = ["internal"]
 
 {{ $sourceDir := "/run/media/ailac22/dades" }}
 {{ $destCloudDir := "pcloud:backup" }}
@@ -29,17 +30,21 @@ full-backup = ["cloud", "internal"]
 systemd-drop-in-files = ["systemd-things.conf"]
 # password-file = "restic-repo-password"
 # password-command = "python get-restic-pass.py {{ .Profile.Name }}"
-run-before = "python {{ .ConfigDir }}/run-before.py {{ .Profile.Name }}"
+run-before = "python {{ .ConfigDir }}/run-before.py {{ .Profile.Name }} {{ .ConfigDir }}"
 
 [default.backup]
 verbose = true
 source = "{{ $sourceDir }}"
 # schedule = "4d" 
-dry-run = true
+# dry-run = true
 exclude = ["node_modules", ".Trash-1000"]
 default-group = "full-backup"
-schedule = "*:0/5"
+# schedule = "*:0/20"
+#  schedule = "*:0/5"
 tag = ["dades_pc_principal"]
+schedule-permission = "user"
+schedule-lock-wait = "45m"
+schedule-after-network-online = true
 
 [default.forget]
 keep-last = 7
@@ -52,21 +57,22 @@ prune = true
 
 [schedule-longer]
 inherit = "default"
-# schedule = "4d"
+
+[schedule-longer.backup]
+schedule = "weekly"
 
 [cloud]
 inherit = "default"
-
 lock = "/tmp/resticprofile-cloud.lock"
-# schedule = "daily"
 after-backup = true
 repository = "rclone:{{ $destCloudDir }}{{ $resticBackupFolder }}"
 run-after = "python {{ .ConfigDir }}/run-after.py {{ $sourceDir }} {{ $destCloudDir }} {{ $destCloudDir }}"
 
 [cloud.backup]
+schedule = "daily"
 schedule-permission = "user"
-# schedule-lock-wait = "45m"
-# # schedule-after-network-online = true
+schedule-lock-wait = "45m"
+schedule-after-network-online = true
 
 [internal]
 inherit = "schedule-longer"
@@ -75,3 +81,5 @@ after-backup = true
 repository = "local:{{ $destLocalDir }}{{ $resticBackupFolder }}"
 run-after = "python {{ .ConfigDir }}/run-after.py {{ $sourceDir }} {{ $destLocalDir }} {{ $destCloudDir }}"
 
+[internal.backup]
+schedule-permission = "user"
